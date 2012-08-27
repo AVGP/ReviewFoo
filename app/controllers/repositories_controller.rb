@@ -14,6 +14,8 @@ class RepositoriesController < ApplicationController
   # GET /repositories/1.json
   def show
     @repository = Repository.find(params[:id])
+    
+    @commits = Mercurial::Repository.open(@repository.url).commits.all
 
     respond_to do |format|
       format.html # show.html.erb

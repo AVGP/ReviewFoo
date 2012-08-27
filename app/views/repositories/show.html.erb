@@ -10,6 +10,13 @@
   <%= @repository.url %>
 </p>
 
+<p>There are <%= @commits.length %> Commits</p>
+
+<ul>
+  <% @commits.each do |commit| %>
+  <li><%= commit.hash_id %> - <%= commit.message %></li>
+  <% end %>
+</ul>
 
 <%= link_to 'Edit', edit_repository_path(@repository) %> |
 <%= link_to 'Back', repositories_path %>
