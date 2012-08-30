@@ -25,6 +25,10 @@ group :development, :test do
   gem 'watchr'
 end
 
+group :test do
+    gem 'factory_girl_rails'
+end
+
 gem 'mercurial-ruby'
 gem 'jquery-rails'
 
