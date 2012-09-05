@@ -9,7 +9,8 @@ namespace :repository do
             :author => fullAuthor, 
             :date => repoCommit.date,
             :hash_id => repoCommit.hash_id,
-            :message => repoCommit.message
+            :message => repoCommit.message,
+            :repository_id => repo.id
           )
         end
       end
