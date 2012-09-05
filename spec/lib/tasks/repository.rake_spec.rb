@@ -13,7 +13,7 @@ describe 'repository.rake tasks' do
     before do
       @taskName = "repository:scan"
       commitFactory = mock(Mercurial::CommitFactory)
-      Struct.new("CommitFake", :author, :author_email, :hash, :date, :message)
+      Struct.new("CommitFake", :author, :author_email, :hash_id, :date, :message)
       
       commitFactory.stub!(:all).and_return([
           Struct::CommitFake.new("John Doe", "john.doe@example.com", "0abc123", "01-02-2012 08:30", "First"),
