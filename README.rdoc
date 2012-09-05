@@ -14,15 +14,18 @@ Here it comes.
 
 == Roadmap
 
- 1. Release: Import repositories and import commits via rake task
- 2. Release: View commits, changed files and diffs
- 3. Release: Comment lines in the diff and accept / reject a commit, send notification emails
- 4. Release: Add users / owner / repository-based access control
- 5. Release: Do a merge to somewhere, when commit is accepted
- 6. Release: Get a beer.
+ 0.1. Release: Import repositories and import commits via rake task
+ 0.2. Release: What about branching? Let's support branches.
+ 0.3. Release: View commits, changed files and diffs
+ 0.4. Release: Comment lines in the diff and accept / reject a commit, send notification emails
+ 0.5. Release: Add users / owner / repository-based access control
+ 0.6. Release: Do a merge to somewhere, when commit is accepted
+ Then: Get a beer.
 
 == Where are you now?
 
 As this is a "fun" project (sounds a little desperate, doesn't it?) it may take a gazillion years to reach some of the releases.
 Plus: This is my Rails learning project. I want it the "hard" way - TDD with RSpec.
-Right now I am approaching Release 1.
+
+ * Aug, 27th: ReviewFoo was born. Let's see, if that is a good or bad thing.
+ * Sept, 5th: Release 0.1 is here! Wooohooo! 
