@@ -4,9 +4,15 @@ I had a task seeming simple enough: Find a nice way of doing code reviews for ou
 As it turned out: That isn't simple. We're using Mercurial, BitBucket, JIRA and a branch-trinity of "testing" -> "default" -> "prod".
 The workflow should be: When something is in testing, the unit tests do not fail and Code Review says "OK", merge it into default (which is eventually merged into prod and deployed)
 
- 1. First was a suggestion that was made to me: Phabricator. But that thing breaks whenever it can, which apparently is "every few hours". Even without touching the installation on the server. To be fair here: That seems to be related with Mercurial.
- 2. We had the Atlassian onDemand suite, so I started with looking into Crucible. But the onDemand version does not support Mercurial. Funny, eh?
- 3. My final experiment was ReviewBoard for Mercurial. Hahahaha. Python software at its best. Does not work, if it works it does not work correctly. You can't make that stuff up.
+ 1. First was a suggestion that was made to me: Phabricator. 
+    But that thing breaks whenever it can, which apparently is "every few hours".
+    Even without touching the installation on the server. 
+    To be fair here: That seems to be related with Mercurial.
+ 2. We had the Atlassian onDemand suite, so I started looking into Crucible.
+    But the onDemand version does not support Mercurial. Funny, eh?
+ 3. My final experiment was ReviewBoard for Mercurial. Hahahaha. 
+    Python software at its best. Does not work, if it works it does not work correctly.
+    You can't make that stuff up.
 
 So I thought: Screw it, I am going to write my own web-based review tool.
 
