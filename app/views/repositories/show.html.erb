@@ -10,10 +10,10 @@
   <%= @repository.url %>
 </p>
 
-<p>There are <%= @commits.length %> Commits</p>
+<p>There are <%= @repository.commits.length %> Commits</p>
 
 <ul>
-  <% @commits.each do |commit| %>
+  <% @repository.commits.each do |commit| %>
   <li><%= commit.hash_id %> - <%= commit.message %></li>
   <% end %>
 </ul>

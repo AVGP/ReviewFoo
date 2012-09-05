@@ -15,8 +15,6 @@ class RepositoriesController < ApplicationController
   def show
     @repository = Repository.find(params[:id])
     
-    @commits = Mercurial::Repository.open(@repository.url).commits.all
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @repository }
