@@ -21,6 +21,7 @@ describe 'repository.rake tasks' do
         ])
       
       repository = mock(Mercurial::Repository)
+      repository.stub!(:id).and_return(1)
       repository.stub!(:commits).and_return(commitFactory)
       
       Mercurial::Repository.stub!(:open).and_return(repository)
@@ -33,6 +34,12 @@ describe 'repository.rake tasks' do
       Commit.all.count.should be 0
       @rake[@taskName].invoke
       Commit.all.count.should be 2      
+    end
+    
+    it "should associate the commits with the right repository" do
+      Commit.find(:all, :conditions => "repository_id = 1").count.should be 0
+      @rake[@taskName].invoke
+      Commit.find(:all, :conditions => "repository_id = 1").count.should be 2
     end
     
     it "should not persist already persisted commits" do
