@@ -11,10 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120828052231) do
+ActiveRecord::Schema.define(:version => 20120905132844) do
 
   create_table "commits", :force => true do |t|
-    t.string   "hash"
+    t.string   "hash_id"
     t.string   "message"
     t.string   "author"
     t.datetime "date"

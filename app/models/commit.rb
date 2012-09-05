@@ -1,4 +1,4 @@
 class Commit < ActiveRecord::Base
   belongs_to :repository
-  attr_accessible :author, :date, :hash, :message
+  attr_accessible :author, :date, :hash_id, :message
 end
