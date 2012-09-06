@@ -41,6 +41,12 @@ describe 'repository.rake tasks' do
       @rake[@taskName].invoke
       Commit.find(:all, :conditions => "repository_id = 1").count.should be 2
     end
+
+    it "should associate the commits with the right branch" do
+      Commit.find(:all, :conditions => "branch_name = 'default'").count.should be 0
+      @rake[@taskName].invoke
+      Commit.find(:all, :conditions => "branch_name = 'default'").count.should be 1
+    end    
     
     it "should not persist already persisted commits" do
       Commit.all.count.should be 0
