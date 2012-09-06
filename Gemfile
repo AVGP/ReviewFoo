@@ -23,6 +23,7 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'watchr'
+  gem 'spork'
 end
 
 group :test do
