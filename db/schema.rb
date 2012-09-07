@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120905132844) do
+ActiveRecord::Schema.define(:version => 20120905142009) do
 
   create_table "commits", :force => true do |t|
     t.string   "hash_id"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20120905132844) do
     t.integer  "repository_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.string   "branch_name"
   end
 
   add_index "commits", ["repository_id"], :name => "index_commits_on_repository_id"
