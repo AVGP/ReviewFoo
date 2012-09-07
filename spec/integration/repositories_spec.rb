@@ -15,6 +15,18 @@ describe "Repository index" do
     page.should have_content("Test 1")
     page.should have_content("Test 2")    
   end
+  
+  it "should allow the user to delete a repository", :js => true do
+    visit "/repositories/new"
+    fill_in("Name", :with => "Test")
+    fill_in("Url", :with => "/some/path")
+    click_on("Create Repository")
+
+    visit "/repositories"
+    click_on("Destroy")
+    page.driver.browser.switch_to.alert.accept
+    Repository.find(:first, :conditions => "name = 'Test 1'").should be_nil
+  end
 end
 
 describe "Adding a new repository" do
