@@ -10,6 +10,7 @@ namespace :repository do
             :date => repoCommit.date,
             :hash_id => repoCommit.hash_id,
             :message => repoCommit.message,
+            :branch_name => repoCommit.branch_name,
             :repository_id => repo.id
           )
         end
