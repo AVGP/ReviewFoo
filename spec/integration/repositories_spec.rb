@@ -24,4 +24,13 @@ describe "Adding a new repository" do
     
     page.should have_content "Url can't be blank"
   end
+  
+  it "should create the new repository when the form is properly filled" do
+    visit "/repositories/new"
+    fill_in("Name", :with => "Test")
+    fill_in("Url", :with => "/some/path")
+    click_on("Create Repository")
+    
+    Repository.find(:first, :conditions => "name = 'Test'").should_not be_nil
+  end
 end
