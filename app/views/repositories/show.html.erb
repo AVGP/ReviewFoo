@@ -14,7 +14,7 @@
 
 <ul>
   <% @repository.commits.each do |commit| %>
-  <li><%= commit.hash_id %> - <%= commit.message %></li>
+  <li><span class="bubble"><%= commit.branch_name %></span> <%= commit.hash_id %> - <%= commit.message %></li>
   <% end %>
 </ul>
 
