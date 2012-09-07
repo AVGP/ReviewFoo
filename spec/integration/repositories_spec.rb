@@ -5,7 +5,16 @@ describe "Repository index" do
     visit "/repositories/"
     click_link("New Repository")
     current_path.should == "/repositories/new"
-  end  
+  end
+  
+  it "should show existing repositories" do
+    Repository.create(:name => "Test 1", :url => "/some/path/A")
+    Repository.create(:name => "Test 2", :url => "/some/path/B")
+    
+    visit "/repositories"
+    page.should have_content("Test 1")
+    page.should have_content("Test 2")    
+  end
 end
 
 describe "Adding a new repository" do
