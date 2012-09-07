@@ -21,7 +21,7 @@ Here it comes.
 == Roadmap
 
  0.1. Release: Import repositories and import commits via rake task
- 0.2. Release: What about branching? Let's support branches.
+ 0.2. Release: What about branching? Let's support branches. At least basic.
  0.3. Release: View commits, changed files and diffs
  0.4. Release: Comment lines in the diff and accept / reject a commit, send notification emails
  0.5. Release: Add users / owner / repository-based access control
@@ -35,3 +35,4 @@ Plus: This is my Rails learning project. I want it the "hard" way - TDD with RSp
 
  * Aug, 27th: ReviewFoo was born. Let's see, if that is a good or bad thing.
  * Sept, 5th: Release 0.1 is here! Wooohooo! 
+ * Sept, 7th: Release 0.2 now. Nice, eh?
