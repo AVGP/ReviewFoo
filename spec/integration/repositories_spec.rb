@@ -7,3 +7,21 @@ describe "Repository index" do
     current_path.should == "/repositories/new"
   end  
 end
+
+describe "Adding a new repository" do
+  it "should display an error message, when the name is not filled it" do
+    visit "/repositories/new"
+    fill_in("Url", :with => "/some/path/")
+    click_on("Create Repository")
+    
+    page.should have_content "Name can't be blank"
+  end
+
+  it "should display an error message, when the url is not filled it" do
+    visit "/repositories/new"
+    fill_in("Name", :with => "Some Name")
+    click_on("Create Repository")
+    
+    page.should have_content "Url can't be blank"
+  end
+end
