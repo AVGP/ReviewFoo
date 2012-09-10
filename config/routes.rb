@@ -1,4 +1,8 @@
 ReviewFoo::Application.routes.draw do
+  get "commit/:hash" => "commit#show", :as => :commit
+  get "commit/comment"
+  get "commit/react"
+
   resources :repositories
 
   # The priority is based upon order of creation:

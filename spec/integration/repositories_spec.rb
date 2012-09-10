@@ -25,8 +25,9 @@ describe "Repository index" do
     visit "/repositories"
     click_on("Destroy")
     page.driver.browser.switch_to.alert.accept
-    Repository.find(:first, :conditions => "name = 'Test 1'").should be_nil
+    Repository.find(:first, :conditions => "name = 'Test'").should be_nil
   end
+  
 end
 
 describe "Adding a new repository" do
@@ -53,5 +54,36 @@ describe "Adding a new repository" do
     click_on("Create Repository")
     
     Repository.find(:first, :conditions => "name = 'Test'").should_not be_nil
+  end
+end
+
+describe "Viewing a repository" do
+  before :each do
+    @repo = Repository.create(:name => "Test 1", :url => "/some/path/A")
+    Commit.create(
+      :repository_id => @repo.id, 
+      :hash_id => "a123", 
+      :message => "Test 1", 
+      :branch_name => "default"
+      )
+    Commit.create(
+      :repository_id => @repo.id, 
+      :hash_id => "b456", 
+      :branch_name => "other",
+      :message => "Test 2"
+      )
+  end
+  
+  it "should display all the commits and their message" do
+    
+    visit "/repositories/" + @repo.id.to_s
+    page.should have_content "a123 - Test 1"
+    page.should have_content "b456 - Test 2"
+  end
+  
+  it "should have links for the commits to the detail page of that commit" do
+    visit "/repositories/" + @repo.id.to_s
+    click_on("a123 - Test 1")
+    current_path.should eq("/commit/a123")
   end
 end
