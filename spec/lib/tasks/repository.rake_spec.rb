@@ -14,7 +14,7 @@ describe 'repository.rake tasks' do
       @taskName = "repository:scan"
       commitFactory = mock(Mercurial::CommitFactory)
       Struct.new("CommitFake", :author, :author_email, :hash_id, :date, :message, :branch_name, :diffs)
-      Struct.new("DiffFake", :filename, :body)
+      Struct.new("DiffFake", :file_b, :body)
       
       commitFactory.stub!(:all).and_return([
           Struct::CommitFake.new(
@@ -78,7 +78,6 @@ describe 'repository.rake tasks' do
     it "should persist the diffs along with the commits" do
       @rake[@taskName].invoke
       Commit.find(:all, :conditions => "branch_name = 'default'")[0].commit_diffs.count.should be 1
-      
     end  
   end
 end
