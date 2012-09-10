@@ -13,6 +13,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+*.DS_Store
 
 #I use redcar. You may not..
 .redcar/*
