@@ -77,7 +77,11 @@ describe 'repository.rake tasks' do
     
     it "should persist the diffs along with the commits" do
       @rake[@taskName].invoke
-      Commit.find(:all, :conditions => "branch_name = 'default'")[0].commit_diffs.count.should be 1
-    end  
+      commit = Commit.find(:all, :conditions => "branch_name = 'default'")[0]
+      commitDiffs = commit.commit_diffs
+      commitDiffs.count.should be 1
+      commitDiffs[0].commit_id.should be commit.id
+      commitDiffs[0].content.should eq("some diff content")
+    end
   end
 end

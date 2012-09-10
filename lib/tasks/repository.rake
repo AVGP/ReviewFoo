@@ -13,6 +13,7 @@ namespace :repository do
             :branch_name => repoCommit.branch_name,
             :repository_id => repo.id
           )
+          
           repoCommit.diffs.each do |diff|
             CommitDiff.create!(
               :commit_id => commit.id,
