@@ -1,6 +1,6 @@
 class CreateDiffs < ActiveRecord::Migration
   def change
-    create_table :diffs do |t|
+    create_table :commit_diffs do |t|
       t.integer :commit_id
       t.string :path
       t.string :content

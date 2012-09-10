@@ -14,10 +14,27 @@ describe 'repository.rake tasks' do
       @taskName = "repository:scan"
       commitFactory = mock(Mercurial::CommitFactory)
       Struct.new("CommitFake", :author, :author_email, :hash_id, :date, :message, :branch_name)
+      Struct.new("DiffFake", :filename, :body)
       
       commitFactory.stub!(:all).and_return([
-          Struct::CommitFake.new("John Doe", "john.doe@example.com", "0abc123", "01-02-2012 08:30", "First", "default"),
-          Struct::CommitFake.new("Alice Aaron", "alice.aaron@example.com", "1def567", "01-02-2012 08:40", "Second", "other_branch")
+          Struct::CommitFake.new(
+            "John Doe", 
+            "john.doe@example.com", 
+            "0abc123", 
+            "01-02-2012 08:30", 
+            "First", 
+            "default", 
+            [Struct::DiffFake.new("test.txt", "some diff content")]
+          ),
+          Struct::CommitFake.new(
+            "Alice Aaron", 
+            "alice.aaron@example.com", 
+            "1def567", 
+            "01-02-2012 08:40", 
+            "Second", 
+            "other_branch", 
+            [Struct::DiffFake.new("other.txt", "some other diff content")]
+          )
         ])
       
       repository = mock(Mercurial::Repository)
@@ -57,5 +74,11 @@ describe 'repository.rake tasks' do
       @rake[@taskName].invoke
       Commit.all.count.should be 2            
     end
+    
+    it "should persist the diffs along with the commits" do
+      @rake[@taskName].invoke
+      Commit.find(:all, :conditions => "branch_name = 'default'")[0].CommitDiffs.count.should be 1
+      
+    end  
   end
 end
