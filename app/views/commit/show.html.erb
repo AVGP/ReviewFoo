@@ -5,8 +5,8 @@
 <section id="diffs">
   <% @commit.commit_diffs.each do |diff| %>
   <p><%= diff.path %></p>
-  <div class="diff">
-    <code><pre><%= diff.content %></pre></code>
+  <div class="diffContainer">
+    <code><pre class=""><%= diff.content %></pre></code>
   </div>
   <% end %>
 </section>
