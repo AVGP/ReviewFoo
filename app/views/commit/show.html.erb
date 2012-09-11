@@ -1,2 +1,4 @@
-<h1>Commit#show</h1>
-<p>Find me in app/views/commit/show.html.erb</p>
+<h1><%= @commit.hash_id + "@" + @commit.branch_name %></h1>
+<div>
+  <%= @commit.message %>
+</div>
