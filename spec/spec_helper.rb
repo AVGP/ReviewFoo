@@ -31,8 +31,12 @@
 
     # If you're not using ActiveRecord, or you'd prefer not to run each of your
     # examples within a transaction, remove the following line or assign false
-    # instead of true.
-    config.use_transactional_fixtures = true
+    # instead of true.  
+#    DatabaseCleaner.strategy = :truncation
+
+    config.use_transactional_fixtures = false
+#    config.before(:each) { DatabaseCleaner.start }
+#    config.after(:each) { DatabaseCleaner.clean }
   end
 
 #end
