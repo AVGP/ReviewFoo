@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Commit detail page" do
+describe "Commit detail page", :js => true do
   before :each do
     @repo = Repository.create(:name => "Test 1", :url => "/some/path/A")
     @commit = Commit.create(
@@ -27,5 +27,10 @@ describe "Commit detail page" do
     visit commit_path(@commit)
     page.should have_content @commitDiff.content
     page.should have_content @commitDiff.path
+  end
+  
+  it "should use snippet.js to spice up the display of the diffs" do
+    visit commit_path(@commit)
+    page.should have_selector("div.snippet-wrap pre.diff ol")
   end
 end
