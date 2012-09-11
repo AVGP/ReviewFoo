@@ -9,12 +9,23 @@ describe "Commit detail page" do
       :message => "Test 1", 
       :branch_name => "default"
       )    
+    @commitDiff = CommitDiff.create(
+      :commit_id => @commit.id,
+      :content => "Diff 1",
+      :path => "/some/path"
+    )
   end
   
   it "should display the commit message, the branch name and the hash" do
-    visit "/commit/" + @commit.hash_id.to_s
+    visit commit_path(@commit)
     page.should have_content @commit.hash_id.to_s
     page.should have_content @commit.message
     page.should have_content @commit.branch_name
+  end
+  
+  it "should display the diffs for that commit and their contents and paths" do
+    visit commit_path(@commit)
+    page.should have_content @commitDiff.content
+    page.should have_content @commitDiff.path
   end
 end
