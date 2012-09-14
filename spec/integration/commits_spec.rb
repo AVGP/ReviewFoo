@@ -33,4 +33,10 @@ describe "Commit detail page", :js => true do
     visit commit_path(@commit)
     page.should have_selector("div.snippet-wrap pre.diff ol")
   end
+  
+  it "should give the possibility to accept or reject the commit" do
+    visit commit_path(@commit)
+    page.should have_selector(".reject")
+    page.should have_selector(".accept")
+  end
 end
