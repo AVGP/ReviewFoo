@@ -33,6 +33,7 @@ Here it comes.
 As this is a "fun" project (sounds a little desperate, doesn't it?) it may take a gazillion years to reach some of the releases.
 Plus: This is my Rails learning project. I want it the "hard" way - TDD with RSpec.
 
- * Aug, 27th: ReviewFoo was born. Let's see, if that is a good or bad thing.
- * Sept, 5th: Release 0.1 is here! Wooohooo! 
- * Sept, 7th: Release 0.2 now. Nice, eh?
+ * Aug, 27th:   ReviewFoo was born. Let's see, if that is a good or bad thing.
+ * Sept, 5th:   Release 0.1 is here! Wooohooo! 
+ * Sept, 7th:   Release 0.2 now. Nice, eh?
+ * Sept, 11th:  Release 0.3 has been reached.
