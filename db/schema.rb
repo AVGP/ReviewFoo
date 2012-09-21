@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120909204214) do
+ActiveRecord::Schema.define(:version => 20120914052933) do
 
   create_table "commit_diffs", :force => true do |t|
     t.integer  "commit_id"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20120909204214) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.string   "branch_name"
+    t.integer  "accepted"
   end
 
   add_index "commits", ["repository_id"], :name => "index_commits_on_repository_id"
