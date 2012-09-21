@@ -3,10 +3,18 @@
   <%= @commit.message %>
 </div>
 <section id="diffs">
+  <h2>Changes</h2>
   <% @commit.commit_diffs.each do |diff| %>
   <p><%= diff.path %></p>
   <div class="diffContainer">
     <code><pre class="diff"><%= diff.content %></pre></code>
   </div>
   <% end %>
+</section>
+<section>
+  <h2>Next steps:</h2>
+  <p>
+    <a class="accept" href="#">Accept</a> |
+    <a class="reject" href="#">Reject</a> |
+  </p>
 </section>
