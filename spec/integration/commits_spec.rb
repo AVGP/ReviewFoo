@@ -45,7 +45,16 @@ describe "Commit detail page", :js => true do
     visit commit_path(@commit)
     click_on("Reject")
     
-    visit commit_path(@commit)    
+    visit commit_path(@commit) #This is a hack for the Selenium driver to have the data persisted   
     Commit.find(@commit.id).accepted.should eq(-1)
+  end
+
+  it "should allow to accept a commit" do
+    Commit.find(@commit.id).accepted.should eq(0)
+    visit commit_path(@commit)
+    click_on("Accept")
+    
+    visit commit_path(@commit) #This is a hack for the Selenium driver to have the data persisted
+    Commit.find(@commit.id).accepted.should eq(1)
   end
 end

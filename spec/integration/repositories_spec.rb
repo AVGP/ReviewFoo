@@ -23,7 +23,7 @@ describe "Repository index" do
     click_on("Destroy")
     page.driver.browser.switch_to.alert.accept
 
-    visit "/repositories"
+    visit "/repositories" #This is a hack for the Selenium driver to have the data persisted
     Repository.find(:first, :conditions => "name = 'Test'").should be_nil
   end
   
