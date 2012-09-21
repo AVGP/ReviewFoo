@@ -17,14 +17,13 @@ describe "Repository index" do
   end
   
   it "should allow the user to delete a repository", :js => true do
-    visit "/repositories/new"
-    fill_in("Name", :with => "Test")
-    fill_in("Url", :with => "/some/path")
-    click_on("Create Repository")
-
+    Repository.create(:name => "Test", :url => "/some/path/A")
+    
     visit "/repositories"
     click_on("Destroy")
     page.driver.browser.switch_to.alert.accept
+
+    visit "/repositories"
     Repository.find(:first, :conditions => "name = 'Test'").should be_nil
   end
   
