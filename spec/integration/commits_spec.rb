@@ -41,9 +41,11 @@ describe "Commit detail page", :js => true do
   end
   
   it "should allow to reject a commit" do
-    Commit.find(@commit.id).accepted.should be 0
+    Commit.find(@commit.id).accepted.should eq(0)
     visit commit_path(@commit)
     click_on("Reject")
-    Commit.find(@commit.id).accepted.should be -1
+    
+    visit commit_path(@commit)    
+    Commit.find(@commit.id).accepted.should eq(-1)
   end
 end
