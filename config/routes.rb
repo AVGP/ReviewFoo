@@ -1,7 +1,7 @@
 ReviewFoo::Application.routes.draw do
   match "commit/:hash_id" => "commit#show", :as => :commit
   get "commit/comment"
-  get "commit/react"
+  get "commit/reject/:hash_id" => "commit#reject", :as => :reject
 
   resources :repositories
 
