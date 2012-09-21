@@ -14,7 +14,7 @@
 <section>
   <h2>Next steps:</h2>
   <p>
-    <a class="accept" href="#">Accept</a> |
+    <%= link_to "Accept", accept_path(@commit), :class => "accept" %> |
     <%= link_to "Reject", reject_path(@commit), :class => "reject" %> |
   </p>
 </section>
