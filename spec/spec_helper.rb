@@ -35,7 +35,14 @@
     DatabaseCleaner.strategy = :truncation
 
     config.use_transactional_fixtures = false
-    config.before(:each) { DatabaseCleaner.start }
+    config.before :each do
+      if Capybara.current_driver == :rack_test
+        DatabaseCleaner.strategy = :transaction
+      else
+        DatabaseCleaner.strategy = :truncation
+      end
+      DatabaseCleaner.start
+    end      
     config.after(:each) { DatabaseCleaner.clean }
   end
 
