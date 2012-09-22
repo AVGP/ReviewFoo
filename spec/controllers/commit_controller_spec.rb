@@ -24,11 +24,4 @@ describe CommitController do
     end
   end
 
-  describe "GET 'react'" do
-    it "returns http success" do
-      get 'react'
-      response.should be_success
-    end
-  end
-
 end
