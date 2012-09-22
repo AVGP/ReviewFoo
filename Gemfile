@@ -32,6 +32,11 @@ group :test do
     gem 'database_cleaner'
 end
 
+group :production do
+  gem 'mysql2'
+  gem 'thin'
+end
+
 gem 'mercurial-ruby'
 gem 'jquery-rails'
 
