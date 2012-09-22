@@ -7,6 +7,7 @@ gem 'rails', '3.2.8'
 
 gem 'sqlite3'
 gem 'safe_attributes'
+gem 'omniauth-github'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -30,6 +31,11 @@ end
 group :test do
     gem 'factory_girl_rails'
     gem 'database_cleaner'
+end
+
+group :production do
+  gem 'mysql2'
+  gem 'thin'
 end
 
 gem 'mercurial-ruby'
