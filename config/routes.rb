@@ -1,4 +1,5 @@
 ReviewFoo::Application.routes.draw do
+
   match "commit/:hash_id" => "commit#show", :as => :commit
   get "commit/comment"
   get "commit/reject/:hash_id" => "commit#reject", :as => :reject
@@ -6,6 +7,10 @@ ReviewFoo::Application.routes.draw do
 
   resources :repositories
 
+  get   '/login', :to => 'sessions#new', :as => :login
+  match '/auth/:provider/callback', :to => 'sessions#create'
+  match '/auth/failure', :to => 'sessions#failure'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
