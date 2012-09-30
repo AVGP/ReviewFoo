@@ -16,6 +16,13 @@
   # in spec/support/ and its subdirectories.
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+    :provider => 'github',
+    :uid => '123456',
+    :info => { :email => "a@b.com", :nickname => "Alice" }
+  })  
+  
   RSpec.configure do |config|
     # == Mock Framework
     #
